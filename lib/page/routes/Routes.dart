@@ -10,7 +10,7 @@ import 'package:flutterDemo/page/productInfoPage.dart';
 import 'package:flutterDemo/page/productPage.dart';
 import 'package:flutterDemo/page/radioPage.dart';
 import 'package:flutterDemo/page/searchPage.dart';
-import 'package:flutterDemo/page/sound.dart';
+import 'package:flutterDemo/page/WHfit.dart';
 import 'package:flutterDemo/page/swiper.dart';
 import 'package:flutterDemo/page/tabBarController.dart';
 import 'package:flutterDemo/page/tabBarDemoPage.dart';
@@ -42,7 +42,7 @@ final routes = {
   '/dateTime': (context) => DateTimePage(),
   '/swiper': (context) => SwiperPage(),
   '/dialog': (context) => DialogPage(),
-  '/sound': (context) => SoundPage(),
+  '/WHfit': (context) => WHfitPage(),
 };
 
 var onGenerateRoute = (RouteSettings settings) {

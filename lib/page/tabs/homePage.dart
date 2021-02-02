@@ -119,9 +119,9 @@ class _HomePageState extends State<HomePage> {
           height: 10,
         ),
         RaisedButton(
-            child: Text('录音'),
+            child: Text('适配'),
             onPressed: () {
-              Navigator.pushNamed(context, '/sound');
+              Navigator.pushNamed(context, '/WHfit');
             })
       ],
     );
