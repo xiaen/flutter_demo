@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
           const Locale('en', 'US'),
         ],
         debugShowCheckedModeBanner: false,
-        initialRoute: '/WHfit',
+        initialRoute: '/',
         onGenerateRoute: onGenerateRoute);
   }
 }

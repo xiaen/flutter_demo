@@ -9,6 +9,7 @@ import 'package:flutterDemo/page/formPage.dart';
 import 'package:flutterDemo/page/productInfoPage.dart';
 import 'package:flutterDemo/page/productPage.dart';
 import 'package:flutterDemo/page/radioPage.dart';
+import 'package:flutterDemo/page/screen.dart';
 import 'package:flutterDemo/page/searchPage.dart';
 import 'package:flutterDemo/page/WHfit.dart';
 import 'package:flutterDemo/page/swiper.dart';
@@ -43,6 +44,7 @@ final routes = {
   '/swiper': (context) => SwiperPage(),
   '/dialog': (context) => DialogPage(),
   '/WHfit': (context) => WHfitPage(),
+  '/screen': (context) => ScreenPage(),
 };
 
 var onGenerateRoute = (RouteSettings settings) {
