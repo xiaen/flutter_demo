@@ -74,8 +74,9 @@ class _InAppWebViewPageState extends State<InAppWebViewPage> {
           Expanded(
             child: Container(
               child: InAppWebView(
-                initialUrl:
-                    "https://uland.taobao.com/sem/tbsearch?refpid=mm_26632258_3504122_32538762&keyword=%E5%A5%B3%E8%A3%85&clk1=4ddaa865fead0dc5f79e552564c4d04e&upsId=4ddaa865fead0dc5f79e552564c4d04e",
+                // initialUrl:
+                //     "https://uland.taobao.com/sem/tbsearch?refpid=mm_26632258_3504122_32538762&keyword=%E5%A5%B3%E8%A3%85&clk1=4ddaa865fead0dc5f79e552564c4d04e&upsId=4ddaa865fead0dc5f79e552564c4d04e",
+                initialUrl: "https://scratch.jikestar.com/#/",
                 // contextMenu: contextMenu,
                 initialOptions: InAppWebViewGroupOptions(
                   crossPlatform: InAppWebViewOptions(
