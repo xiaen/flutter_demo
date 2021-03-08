@@ -6,6 +6,7 @@ import 'package:flutterDemo/page/dialog.dart';
 import 'package:flutterDemo/page/form.dart';
 import 'package:flutterDemo/page/formDemoPage.dart';
 import 'package:flutterDemo/page/formPage.dart';
+import 'package:flutterDemo/page/http.dart';
 import 'package:flutterDemo/page/productInfoPage.dart';
 import 'package:flutterDemo/page/productPage.dart';
 import 'package:flutterDemo/page/radioPage.dart';
@@ -45,6 +46,7 @@ final routes = {
   '/dialog': (context) => DialogPage(),
   '/WHfit': (context) => WHfitPage(),
   '/screen': (context) => ScreenPage(),
+  '/http': (context) => HttpPage(),
 };
 
 var onGenerateRoute = (RouteSettings settings) {

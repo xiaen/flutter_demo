@@ -131,6 +131,14 @@ class _HomePageState extends State<HomePage> {
               child: Text('录屏'),
               onPressed: () {
                 Navigator.pushNamed(context, '/screen');
+              }),
+          SizedBox(
+            height: 10,
+          ),
+          RaisedButton(
+              child: Text('请求'),
+              onPressed: () {
+                Navigator.pushNamed(context, '/http');
               })
         ],
       ),
