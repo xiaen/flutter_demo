@@ -139,6 +139,14 @@ class _HomePageState extends State<HomePage> {
               child: Text('请求'),
               onPressed: () {
                 Navigator.pushNamed(context, '/http');
+              }),
+          SizedBox(
+            height: 10,
+          ),
+          RaisedButton(
+              child: Text('自定义遮罩层'),
+              onPressed: () {
+                Navigator.pushNamed(context, '/isShow');
               })
         ],
       ),

@@ -7,6 +7,7 @@ import 'package:flutterDemo/page/form.dart';
 import 'package:flutterDemo/page/formDemoPage.dart';
 import 'package:flutterDemo/page/formPage.dart';
 import 'package:flutterDemo/page/http.dart';
+import 'package:flutterDemo/page/isShow.dart';
 import 'package:flutterDemo/page/productInfoPage.dart';
 import 'package:flutterDemo/page/productPage.dart';
 import 'package:flutterDemo/page/radioPage.dart';
@@ -47,6 +48,7 @@ final routes = {
   '/WHfit': (context) => WHfitPage(),
   '/screen': (context) => ScreenPage(),
   '/http': (context) => HttpPage(),
+  '/isShow': (context) => IsShowPage(),
 };
 
 var onGenerateRoute = (RouteSettings settings) {
