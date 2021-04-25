@@ -147,6 +147,22 @@ class _HomePageState extends State<HomePage> {
               child: Text('自定义遮罩层'),
               onPressed: () {
                 Navigator.pushNamed(context, '/isShow');
+              }),
+          SizedBox(
+            height: 10,
+          ),
+          RaisedButton(
+              child: Text('返回桌面'),
+              onPressed: () {
+                Navigator.pushNamed(context, '/backDesktop');
+              }),
+          SizedBox(
+            height: 10,
+          ),
+          RaisedButton(
+              child: Text('sn'),
+              onPressed: () {
+                Navigator.pushNamed(context, '/snPage');
               })
         ],
       ),

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutterDemo/page/SN.dart';
+import 'package:flutterDemo/page/backDesktop.dart';
 import 'package:flutterDemo/page/button.dart';
 import 'package:flutterDemo/page/checkBox.dart';
 import 'package:flutterDemo/page/dateTime.dart';
@@ -49,6 +51,8 @@ final routes = {
   '/screen': (context) => ScreenPage(),
   '/http': (context) => HttpPage(),
   '/isShow': (context) => IsShowPage(),
+  '/backDesktop': (context) => BackDesktop(),
+  '/snPage': (context) => SNPage(),
 };
 
 var onGenerateRoute = (RouteSettings settings) {

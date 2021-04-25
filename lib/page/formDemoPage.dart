@@ -8,6 +8,7 @@ class FormDemoPage extends StatefulWidget {
 }
 
 class _FormDemoPageState extends State<FormDemoPage> {
+  FocusNode blankNode = FocusNode();
   var _userName = '';
   var _sex = 1;
   var _info = '';
@@ -71,126 +72,243 @@ class _FormDemoPageState extends State<FormDemoPage> {
       appBar: AppBar(
         title: Text('表单例子'),
       ),
-      body: Padding(
-        padding: EdgeInsets.all(20),
-        child: Column(
-          children: <Widget>[
-            Row(
+      body: GestureDetector(
+        onTap: () {
+          FocusScope.of(context).requestFocus(blankNode);
+        },
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.all(20),
+            child: Column(
               children: <Widget>[
-                Container(
-                  padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
-                  alignment: Alignment.centerRight,
-                  child: Text('用户名：'),
-                  width: 70,
+                Row(
+                  children: <Widget>[
+                    Container(
+                      padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
+                      alignment: Alignment.centerRight,
+                      child: Text('用户名：'),
+                      width: 70,
+                    ),
+                    Expanded(
+                      child: TextField(
+                        decoration: InputDecoration(
+                            hintText: "请输入用户名", border: OutlineInputBorder()),
+                        onChanged: (value) {
+                          setState(() {
+                            this._userName = value;
+                          });
+                        },
+                      ),
+                      flex: 1,
+                    )
+                  ],
                 ),
-                Expanded(
-                  child: TextField(
-                    decoration: InputDecoration(
-                        hintText: "请输入用户名", border: OutlineInputBorder()),
-                    onChanged: (value) {
-                      setState(() {
-                        this._userName = value;
-                      });
-                    },
-                  ),
-                  flex: 1,
-                )
-              ],
-            ),
-            Row(
-              children: <Widget>[
-                Container(
-                  padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
-                  alignment: Alignment.centerRight,
-                  child: Text('性别：'),
-                  width: 70,
+                Row(
+                  children: <Widget>[
+                    Container(
+                      padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
+                      alignment: Alignment.centerRight,
+                      child: Text('性别：'),
+                      width: 70,
+                    ),
+                    Expanded(
+                        child: RadioListTile(
+                          value: 1,
+                          groupValue: this._sex,
+                          onChanged: (value) {
+                            setState(() {
+                              this._sex = 1;
+                            });
+                          },
+                          title: Text('男'),
+                          selected: this._sex == 1,
+                        ),
+                        flex: 1),
+                    Expanded(
+                      child: RadioListTile(
+                        value: 2,
+                        groupValue: this._sex,
+                        onChanged: this._getSex,
+                        title: Text('女'),
+                        selected: this._sex == 2,
+                      ),
+                      flex: 1,
+                    )
+                  ],
                 ),
-                Expanded(
-                    child: RadioListTile(
-                      value: 1,
-                      groupValue: this._sex,
+                Row(children: this._getList()),
+                Row(
+                  children: <Widget>[
+                    Container(
+                      padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
+                      alignment: Alignment.centerRight,
+                      child: Text('备注：'),
+                      width: 70,
+                    ),
+                    Expanded(
+                      child: TextField(
+                        maxLines: 5,
+                        maxLength: 99,
+                        decoration: InputDecoration(
+                            hintText: '请输入备注', border: OutlineInputBorder()),
+                        onChanged: (value) {
+                          setState(() {
+                            this._info = value;
+                          });
+                        },
+                      ),
+                      flex: 1,
+                    )
+                  ],
+                ),
+                Row(
+                  children: <Widget>[
+                    Container(
+                      padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
+                      alignment: Alignment.centerRight,
+                      child: Text('婚否：'),
+                      width: 70,
+                    ),
+                    Switch(
+                      value: this._isMarry,
                       onChanged: (value) {
                         setState(() {
-                          this._sex = 1;
+                          this._isMarry = value;
                         });
                       },
-                      title: Text('男'),
-                      selected: this._sex == 1,
                     ),
-                    flex: 1),
-                Expanded(
-                  child: RadioListTile(
-                    value: 2,
-                    groupValue: this._sex,
-                    onChanged: this._getSex,
-                    title: Text('女'),
-                    selected: this._sex == 2,
-                  ),
-                  flex: 1,
-                )
+                    Text(this._isMarry ? '已婚' : '单身')
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    RaisedButton(
+                        child: Text('登录'),
+                        textColor: Colors.white,
+                        color: Colors.blue,
+                        onPressed: () {
+                          print(this._userName);
+                          print(this._sex);
+                          print(this.hobby);
+                          print(this._info);
+                          print(this._isMarry);
+                        })
+                  ],
+                ),
+                Row(
+                  children: <Widget>[
+                    Container(
+                      padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
+                      alignment: Alignment.centerRight,
+                      child: Text('用户名：'),
+                      width: 70,
+                    ),
+                    Expanded(
+                      child: TextField(
+                        decoration: InputDecoration(
+                            hintText: "请输入用户名", border: OutlineInputBorder()),
+                        onChanged: (value) {
+                          setState(() {
+                            this._userName = value;
+                          });
+                        },
+                      ),
+                      flex: 1,
+                    )
+                  ],
+                ),
+                Row(
+                  children: <Widget>[
+                    Container(
+                      padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
+                      alignment: Alignment.centerRight,
+                      child: Text('用户名：'),
+                      width: 70,
+                    ),
+                    Expanded(
+                      child: TextField(
+                        decoration: InputDecoration(
+                            hintText: "请输入用户名", border: OutlineInputBorder()),
+                        onChanged: (value) {
+                          setState(() {
+                            this._userName = value;
+                          });
+                        },
+                      ),
+                      flex: 1,
+                    )
+                  ],
+                ),
+                Row(
+                  children: <Widget>[
+                    Container(
+                      padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
+                      alignment: Alignment.centerRight,
+                      child: Text('用户名：'),
+                      width: 70,
+                    ),
+                    Expanded(
+                      child: TextField(
+                        decoration: InputDecoration(
+                            hintText: "请输入用户名", border: OutlineInputBorder()),
+                        onChanged: (value) {
+                          setState(() {
+                            this._userName = value;
+                          });
+                        },
+                      ),
+                      flex: 1,
+                    )
+                  ],
+                ),
+                Row(
+                  children: <Widget>[
+                    Container(
+                      padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
+                      alignment: Alignment.centerRight,
+                      child: Text('用户名：'),
+                      width: 70,
+                    ),
+                    Expanded(
+                      child: TextField(
+                        decoration: InputDecoration(
+                            hintText: "请输入用户名", border: OutlineInputBorder()),
+                        onChanged: (value) {
+                          setState(() {
+                            this._userName = value;
+                          });
+                        },
+                      ),
+                      flex: 1,
+                    )
+                  ],
+                ),
+                Row(
+                  children: <Widget>[
+                    Container(
+                      padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
+                      alignment: Alignment.centerRight,
+                      child: Text('用户名：'),
+                      width: 70,
+                    ),
+                    Expanded(
+                      child: TextField(
+                        decoration: InputDecoration(
+                            hintText: "请输入用户名", border: OutlineInputBorder()),
+                        onChanged: (value) {
+                          setState(() {
+                            this._userName = value;
+                          });
+                        },
+                      ),
+                      flex: 1,
+                    )
+                  ],
+                ),
               ],
             ),
-            Row(children: this._getList()),
-            Row(
-              children: <Widget>[
-                Container(
-                  padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
-                  alignment: Alignment.centerRight,
-                  child: Text('备注：'),
-                  width: 70,
-                ),
-                Expanded(
-                  child: TextField(
-                    maxLines: 5,
-                    maxLength: 99,
-                    decoration: InputDecoration(
-                        hintText: '请输入备注', border: OutlineInputBorder()),
-                    onChanged: (value) {
-                      setState(() {
-                        this._info = value;
-                      });
-                    },
-                  ),
-                  flex: 1,
-                )
-              ],
-            ),
-            Row(
-              children: <Widget>[
-                Container(
-                  padding: EdgeInsets.fromLTRB(0, 0, 5, 0),
-                  alignment: Alignment.centerRight,
-                  child: Text('婚否：'),
-                  width: 70,
-                ),
-                Switch(
-                  value: this._isMarry,
-                  onChanged: (value) {
-                    setState(() {
-                      this._isMarry = value;
-                    });
-                  },
-                ),
-                Text(this._isMarry ? '已婚' : '单身')
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                RaisedButton(
-                    child: Text('登录'),
-                    textColor: Colors.white,
-                    color: Colors.blue,
-                    onPressed: () {
-                      print(this._userName);
-                      print(this._sex);
-                      print(this.hobby);
-                      print(this._info);
-                      print(this._isMarry);
-                    })
-              ],
-            )
-          ],
+          ),
         ),
       ),
     );
