@@ -1,10 +1,14 @@
 import 'dart:async';
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  // 强制横屏
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeRight]);
   runApp(MyApp());
 }
 
@@ -15,8 +19,15 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   @override
+  void initState() {
+    super.initState();
+    SystemChrome.setEnabledSystemUIOverlays([]);
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: InAppWebViewPage());
+    return MaterialApp(
+        debugShowCheckedModeBanner: false, home: InAppWebViewPage());
   }
 }
 
@@ -68,28 +79,26 @@ class _InAppWebViewPageState extends State<InAppWebViewPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(title: Text("InAppWebView")),
         body: Container(
             child: Column(children: <Widget>[
-          Expanded(
-            child: Container(
-              child: InAppWebView(
-                // initialUrl:
-                //     "https://uland.taobao.com/sem/tbsearch?refpid=mm_26632258_3504122_32538762&keyword=%E5%A5%B3%E8%A3%85&clk1=4ddaa865fead0dc5f79e552564c4d04e&upsId=4ddaa865fead0dc5f79e552564c4d04e",
-                initialUrl:
-                    "https://oss1.geek-8.com/scratch/temp/scratch2020.pdf",
-                // contextMenu: contextMenu,
-                initialOptions: InAppWebViewGroupOptions(
-                  crossPlatform: InAppWebViewOptions(
-                    debuggingEnabled: true,
+      Expanded(
+        child: Container(
+          child: InAppWebView(
+            initialUrl: "https://scratch.jikestar.com",
+            // initialUrl:
+            //     "http://192.168.2.143:3000/webappss/qitiandasheng?bd=b&level=8",
+            // contextMenu: contextMenu,
+            initialOptions: InAppWebViewGroupOptions(
+              crossPlatform: InAppWebViewOptions(
+                  // debuggingEnabled: true,
                   ),
-                ),
-                onWebViewCreated: (InAppWebViewController controller) {
-                  _webViewController = controller;
-                },
-              ),
             ),
+            onWebViewCreated: (InAppWebViewController controller) {
+              _webViewController = controller;
+            },
           ),
-        ])));
+        ),
+      ),
+    ])));
   }
 }

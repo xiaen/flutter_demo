@@ -68,6 +68,7 @@ flutter:
     - images/3.0x/a.jpg
     - images/4.0x/a.jpg
     - assets/sounds/
+    - assets/images/
 
   # To add assets to your application, add an assets section, like this:
   # assets:
